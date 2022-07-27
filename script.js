@@ -22,22 +22,17 @@ function playRound(playerSelection, computerSelection) {
             case "ROCK":
                 if (computerSelection == "SCISSORS") {
                     return "PLAYERWIN";
-                } else {
-                    return "COMPWIN";
                 }
             case "PAPER":
                 if (computerSelection == "ROCK") {
                     return "PLAYERWIN";
-                } else {
-                    return "COMPWIN";
                 }
-            case "SCISSORS":
+            default:
                 if (computerSelection == "PAPER") {
                     return "PLAYERWIN";
-                } else {
-                    return "COMPWIN";
                 }
         }
+        return "COMPWIN";
     }
 }
 
