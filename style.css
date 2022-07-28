@@ -1,0 +1,34 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #1E5128;
+}
+.main {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+h1 {
+    margin: 0px;
+    padding: 15px 0px 15px 0px;
+
+    font-size: 36px;
+    color: #D8E9A8;
+    text-align: center;
+    background-color: #4E9F3D
+}
+
+.button-container {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    align-content: center;
+}
+.button {
+    height: 100px; width: 100px;
+    background-color: black;
+}
