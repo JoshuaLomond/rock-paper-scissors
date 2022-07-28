@@ -18,18 +18,18 @@ section.className = "button-container";
 
 for (let i = 0; i < 3; i++) {
     let div = document.createElement("div");
-    div.className = "button";
-    div.id = i;
 
     let image = document.createElement("img");
-    image.id = "image-" + i;
 
     if (i == 0) {
         image.src = "rock.png";
+        div.className="rock";
     } else if (i == 1) {
         image.src = "paper.png";
+        div.className="paper";
     } else {
         image.src = "scissors.png";
+        div.className="scissors";
     }
     
     div.append(image);
@@ -37,6 +37,21 @@ for (let i = 0; i < 3; i++) {
 }
 
 body.append(section);
+
+//Event listeners
+let rock = document.getElementsByClassName('rock')[0];
+let paper = document.getElementsByClassName('paper')[0];
+let scissors = document.getElementsByClassName('scissors')[0];
+
+rock.addEventListener('click', e => {
+    console.log('rock');
+});
+paper.addEventListener('click', e => {
+    console.log('paper');
+});
+scissors.addEventListener('click', e => {
+    console.log('scissors');
+});
 
 
 function getComputerChoice() {
