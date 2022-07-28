@@ -1,3 +1,28 @@
+//Code for header
+let container = document.querySelector(".main");
+
+let header = document.createElement("header");
+let h1 = document.createElement("h1");
+
+h1.innerText = "ROCK - PAPER - SCISSORS";
+
+header.append(h1);
+container.append(header);
+
+//Code for body
+let section = document.createElement("section");
+section.className = "button-container";
+
+for (let i = 0; i < 3; i++) {
+    let div = document.createElement("div");
+    div.className = "button";
+    div.id = i;
+    section.append(div);
+}
+
+container.append(section);
+
+
 function getComputerChoice() {
     let num = Math.floor(Math.random() * 3)
     
@@ -60,5 +85,3 @@ function game() {
         
     }
 }
-
-game();
