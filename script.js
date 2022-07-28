@@ -1,5 +1,5 @@
 //Code for header
-let container = document.querySelector(".main");
+let body = document.querySelector("body");
 
 let header = document.createElement("header");
 let h1 = document.createElement("h1");
@@ -7,9 +7,12 @@ let h1 = document.createElement("h1");
 h1.innerText = "ROCK - PAPER - SCISSORS";
 
 header.append(h1);
-container.append(header);
+body.append(header);
 
-//Code for body
+//Code for selections section
+
+
+//Code for buttons
 let section = document.createElement("section");
 section.className = "button-container";
 
@@ -17,10 +20,23 @@ for (let i = 0; i < 3; i++) {
     let div = document.createElement("div");
     div.className = "button";
     div.id = i;
+
+    let image = document.createElement("img");
+    image.id = "image-" + i;
+
+    if (i == 0) {
+        image.src = "rock.png";
+    } else if (i == 1) {
+        image.src = "paper.png";
+    } else {
+        image.src = "scissors.png";
+    }
+    
+    div.append(image);
     section.append(div);
 }
 
-container.append(section);
+body.append(section);
 
 
 function getComputerChoice() {
