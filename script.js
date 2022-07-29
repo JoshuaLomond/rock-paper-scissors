@@ -118,6 +118,14 @@ function playRound(playerSelection, computerSelection) {
 
     let result = document.getElementsByClassName('result')[0];
 
+    if (playerScore > 4) {
+        alert("You won the game!");
+        location.reload();
+    } if (computerScore > 4) {
+        alert("You lost the game ):");
+        location.reload();
+    }
+
     if (playerSelection == computerSelection) {
         result.innerHTML= `Draw &#128548 Computer also chose ${computerSelection}`;
         updateImage(playerSelection, computerSelection);
@@ -137,14 +145,6 @@ function playRound(playerSelection, computerSelection) {
         result.innerHTML = `You lost &#128533 ${computerSelection} beats ${playerSelection}`;
         updateImage(playerSelection, computerSelection);
         updateScore(false);
-    }
-
-    if (playerScore > 4) {
-        alert("You won the game!");
-        location.reload();
-    } if (computerScore > 4) {
-        alert("You lost the game ):");
-        location.reload();
     }
     
 }
