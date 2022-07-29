@@ -9,9 +9,6 @@ h1.innerText = "ROCK - PAPER - SCISSORS";
 header.append(h1);
 body.append(header);
 
-//Code for selections section
-
-
 //Code for buttons
 let section = document.createElement("section");
 section.className = "button-container";
@@ -22,13 +19,13 @@ for (let i = 0; i < 3; i++) {
     let image = document.createElement("img");
 
     if (i == 0) {
-        image.src = "rock.png";
+        image.src = "img/rock.png";
         div.className="rock";
     } else if (i == 1) {
-        image.src = "paper.png";
+        image.src = "img/paper.png";
         div.className="paper";
     } else {
-        image.src = "scissors.png";
+        image.src = "img/scissors.png";
         div.className="scissors";
     }
     
@@ -37,6 +34,50 @@ for (let i = 0; i < 3; i++) {
 }
 
 body.append(section);
+
+//Results
+let result = document.createElement("div");
+result.className = "result";
+
+result.innerText = "Choose your weapon";
+body.append(result);
+
+//Choices
+let container = document.createElement("div");
+container.className = "choice-container";
+
+let question = document.createElement("img");
+question.src = "img/question-mark.png";
+
+let playerScore = 0;
+let computerScore = 0;
+
+let stringPlayerScore = document.createElement("div");
+stringPlayerScore.innerHTML = "Player: " + playerScore;
+stringPlayerScore.className = "score-text-player";
+let stringComputerScore = document.createElement("div");
+stringComputerScore.innerHTML = "Computer: " + computerScore;
+stringComputerScore.className = "score-text-computer";
+
+let playerChoice = document.createElement("div");
+playerChoice.className = "player";
+playerChoice.append(question);
+container.append(playerChoice);
+
+let computerChoice = document.createElement("div");
+computerChoice.className = "computer";
+computerChoice.append(question.cloneNode(true));
+container.append(computerChoice);
+
+
+body.append(container);
+
+let scoreContainer = document.createElement("div");
+scoreContainer.className = "score-container";
+scoreContainer.append(stringComputerScore);
+scoreContainer.append(stringPlayerScore);
+body.append(scoreContainer);
+
 
 //Event listeners
 let rock = document.getElementsByClassName('rock')[0];
@@ -53,7 +94,7 @@ scissors.addEventListener('click', e => {
     console.log('scissors');
 });
 
-
+//Functions
 function getComputerChoice() {
     let num = Math.floor(Math.random() * 3)
     
