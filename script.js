@@ -118,33 +118,28 @@ function playRound(playerSelection, computerSelection) {
 
     let result = document.getElementsByClassName('result')[0];
 
-    if (playerScore > 4) {
-        alert("You won the game!");
-        location.reload();
-    } if (computerScore > 4) {
-        alert("You lost the game ):");
-        location.reload();
-    }
-
-    if (playerSelection == computerSelection) {
-        result.innerHTML= `Draw &#128548 Computer also chose ${computerSelection}`;
-        updateImage(playerSelection, computerSelection);
-    } else if (playerSelection == "ROCK" && computerSelection != "PAPER") {
-        result.innerHTML = `You win &#128516 ROCK beats ${computerSelection}`;
-        updateImage("ROCK", computerSelection);
-        updateScore(true);
-    } else if (playerSelection == "PAPER" && computerSelection != "SCISSORS") {
-        result.innerHTML = `You win &#128516 PAPER beats ${computerSelection}`;
-        updateImage("PAPER", computerSelection);
-        updateScore(true);
-    } else if (playerSelection == "SCISSORS" && computerSelection != "ROCK") {
-        result.innerHTML = `You win &#128516 SCISSORS beats ${computerSelection}`;
-        updateImage("SCISSORS", computerSelection);
-        updateScore(true);
-    } else {
-        result.innerHTML = `You lost &#128533 ${computerSelection} beats ${playerSelection}`;
-        updateImage(playerSelection, computerSelection);
-        updateScore(false);
+  
+    if (playerScore < 5 && computerScore < 5) {
+        if (playerSelection == computerSelection) {
+            result.innerHTML= `Draw &#128548 Computer also chose ${computerSelection}`;
+            updateImage(playerSelection, computerSelection);
+        } else if (playerSelection == "ROCK" && computerSelection != "PAPER") {
+            result.innerHTML = `You win &#128516 ROCK beats ${computerSelection}`;
+            updateImage("ROCK", computerSelection);
+            updateScore(true);
+        } else if (playerSelection == "PAPER" && computerSelection != "SCISSORS") {
+            result.innerHTML = `You win &#128516 PAPER beats ${computerSelection}`;
+            updateImage("PAPER", computerSelection);
+            updateScore(true);
+        } else if (playerSelection == "SCISSORS" && computerSelection != "ROCK") {
+            result.innerHTML = `You win &#128516 SCISSORS beats ${computerSelection}`;
+            updateImage("SCISSORS", computerSelection);
+            updateScore(true);
+        } else {
+            result.innerHTML = `You lost &#128533 ${computerSelection} beats ${playerSelection}`;
+            updateImage(playerSelection, computerSelection);
+            updateScore(false);
+        }
     }
     
 }
@@ -153,31 +148,40 @@ function updateImage(playerSelection, computerSelection) {
     let player = document.getElementsByClassName('player-img')[0];
     let computer = document.getElementsByClassName('computer-img')[0];
     
-    if (playerSelection == "ROCK") {
-        player.src = "img/rock.png";
-    } else if (playerSelection == "PAPER") {
-        player.src = "img/paper.png"
-    } else {
-        player.src = "img/scissors.png"
-    }
-    if (computerSelection == "ROCK") {
-        computer.src = "img/rock.png";
-    } else if (computerSelection == "PAPER") {
-        computer.src = "img/paper.png"
-    } else {
-        computer.src = "img/scissors.png"
+    if (playerScore < 5 && computerScore < 5) {
+        if (playerSelection == "ROCK") {
+            player.src = "img/rock.png";
+        } else if (playerSelection == "PAPER") {
+            player.src = "img/paper.png"
+        } else {
+            player.src = "img/scissors.png"
+        }
+        if (computerSelection == "ROCK") {
+            computer.src = "img/rock.png";
+        } else if (computerSelection == "PAPER") {
+            computer.src = "img/paper.png"
+        } else {
+            computer.src = "img/scissors.png"
+        }
     }
 }
 
 function updateScore(winner) {
     let p = document.getElementsByClassName('score-text-player')[0];
     let c = document.getElementsByClassName('score-text-computer')[0];
-    
-    if (winner) {
+    let result = document.getElementsByClassName('result')[0];
+
+    if (winner && playerScore < 5 && computerScore < 5) {
         playerScore++;
         p.innerHTML = `Player: ${playerScore}`;
     } else {
         computerScore++;
         c.innerHTML = `Computer: ${computerScore}`;
+    }
+
+    if (playerScore > 4) {
+        result.innerHTML = 'You won the game!'
+    } else if (computerScore > 4) {
+        result.innerHTML = 'You lost the game &#128533'
     }
 }
