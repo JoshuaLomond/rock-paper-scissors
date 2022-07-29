@@ -47,6 +47,7 @@ let container = document.createElement("div");
 container.className = "choice-container";
 
 let question = document.createElement("img");
+question.className = 'player-img';
 question.src = "img/question-mark.png";
 
 let playerScore = 0;
@@ -64,9 +65,13 @@ playerChoice.className = "player";
 playerChoice.append(question);
 container.append(playerChoice);
 
+let question2 = document.createElement("img");
+question2.className = 'computer-img';
+question2.src = "img/question-mark.png";
+
 let computerChoice = document.createElement("div");
 computerChoice.className = "computer";
-computerChoice.append(question.cloneNode(true));
+computerChoice.append(question2);
 container.append(computerChoice);
 
 
@@ -74,8 +79,8 @@ body.append(container);
 
 let scoreContainer = document.createElement("div");
 scoreContainer.className = "score-container";
-scoreContainer.append(stringComputerScore);
 scoreContainer.append(stringPlayerScore);
+scoreContainer.append(stringComputerScore);
 body.append(scoreContainer);
 
 
@@ -85,13 +90,13 @@ let paper = document.getElementsByClassName('paper')[0];
 let scissors = document.getElementsByClassName('scissors')[0];
 
 rock.addEventListener('click', e => {
-    console.log('rock');
+    playRound('ROCK', getComputerChoice());
 });
 paper.addEventListener('click', e => {
-    console.log('paper');
+    playRound('PAPER', getComputerChoice());
 });
 scissors.addEventListener('click', e => {
-    console.log('scissors');
+    playRound('SCISSORS', getComputerChoice());
 });
 
 //Functions
@@ -103,7 +108,7 @@ function getComputerChoice() {
             return "ROCK";
         case 1:
             return "PAPER";
-        default:
+        case 2:
             return "SCISSORS";
     }
 }
@@ -111,49 +116,43 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toUpperCase();
 
+    let result = document.getElementsByClassName('result')[0];
+
     if (playerSelection == computerSelection) {
-        return "DRAW";
+        result.innerHTML= `Draw &#128548 Computer also chose ${computerSelection}`;
+        updateImage(playerSelection, computerSelection);
+    } else if (playerSelection == "ROCK" && computerSelection != "PAPER") {
+        result.innerHTML = `You win &#128516 ROCK beats ${computerSelection}`;
+        updateImage("ROCK", computerSelection);
+    } else if (playerSelection == "PAPER" && computerSelection != "SCISSORS") {
+        result.innerHTML = `You win &#128516 PAPER beats ${computerSelection}`;
+        updateImage("PAPER", computerSelection);
+    } else if (playerSelection == "SCISSORS" && computerSelection != "ROCK") {
+        result.innerHTML = `You win &#128516 SCISSORS beats ${computerSelection}`;
+        updateImage("SCISSORS", computerSelection);
+    } else {
+        result.innerHTML = `You lost &#128533 ${computerSelection} beats ${playerSelection}`;
+        updateImage(playerSelection, computerSelection);
     }
-    else {
-        switch (playerSelection) {
-            case "ROCK":
-                if (computerSelection == "SCISSORS") {
-                    return "PLAYERWIN";
-                }
-            case "PAPER":
-                if (computerSelection == "ROCK") {
-                    return "PLAYERWIN";
-                }
-            default:
-                if (computerSelection == "PAPER") {
-                    return "PLAYERWIN";
-                }
-        }
-        return "COMPWIN";
-    }
+    
 }
 
-function game() {
-
-    let playerScore = 0;
-    let computerScore = 0;
-
-    while (playerScore < 3 && computerScore < 3) {
-            
-        let playerSelection = prompt("Rock, paper, or scissors?").toUpperCase();
-        let computerSelection = getComputerChoice();
-       
-        if (playRound(playerSelection, computerSelection) == "DRAW") {
-            console.log(`Draw: Computer also chose ${computerSelection}`);
-        } else if (playRound(playerSelection, computerSelection) == "PLAYERWIN") {
-            console.log(`You win! ${playerSelection} beats ${computerSelection}`);
-            playerScore++;
-            console.log(`PLAYER: ${playerScore} COMPUTER: ${computerScore}`);
-        } else {
-            console.log(`You lost :/ ${computerSelection} beats ${playerSelection}`);
-            computerScore++;
-            console.log(`PLAYER: ${playerScore} COMPUTER: ${computerScore}`);
-        }
-        
+function updateImage(playerSelection, computerSelection) {
+    let player = document.getElementsByClassName('player-img')[0];
+    let computer = document.getElementsByClassName('computer-img')[0];
+    
+    if (playerSelection == "ROCK") {
+        player.src = "img/rock.png";
+    } else if (playerSelection == "PAPER") {
+        player.src = "img/paper.png"
+    } else {
+        player.src = "img/scissors.png"
+    }
+    if (computerSelection == "ROCK") {
+        computer.src = "img/rock.png";
+    } else if (computerSelection == "PAPER") {
+        computer.src = "img/paper.png"
+    } else {
+        computer.src = "img/scissors.png"
     }
 }
