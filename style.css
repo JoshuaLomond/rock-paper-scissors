@@ -49,3 +49,43 @@ img {
     height: 125px;
     width: 125px;
 }
+
+.result {
+    color: #D8E9A8;
+    font-size: 36px;
+    font-weight: 900;
+    text-align: center;
+    padding: 40px;
+}
+
+.choice-container {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+}
+.player, .computer {
+    height: 125px;
+    width: 125px;
+}
+
+.score-container {
+    text-align: center;
+    width: 100%;
+    display: flex;
+
+    justify-content: center;
+}
+.score-text-player, .score-text-computer {
+    width: fit-content;
+    padding-top: 35px;
+    font-size: 36px;
+}
+.score-text-player {
+    position: relative;
+    left: 15px;
+}
+.score-text-computer {
+    position: relative;
+    right: 50px;
+}
