@@ -39,7 +39,7 @@ body.append(section);
 let result = document.createElement("div");
 result.className = "result";
 
-result.innerText = "Choose your weapon";
+result.innerText = "Choose your weapon - First to 5 wins!";
 body.append(result);
 
 //Choices
@@ -124,15 +124,25 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection == "ROCK" && computerSelection != "PAPER") {
         result.innerHTML = `You win &#128516 ROCK beats ${computerSelection}`;
         updateImage("ROCK", computerSelection);
+        updateScore(true);
     } else if (playerSelection == "PAPER" && computerSelection != "SCISSORS") {
         result.innerHTML = `You win &#128516 PAPER beats ${computerSelection}`;
         updateImage("PAPER", computerSelection);
+        updateScore(true);
     } else if (playerSelection == "SCISSORS" && computerSelection != "ROCK") {
         result.innerHTML = `You win &#128516 SCISSORS beats ${computerSelection}`;
         updateImage("SCISSORS", computerSelection);
+        updateScore(true);
     } else {
         result.innerHTML = `You lost &#128533 ${computerSelection} beats ${playerSelection}`;
         updateImage(playerSelection, computerSelection);
+        updateScore(false);
+    }
+
+    if (playerScore > 4) {
+        alert("You won the game!");
+    } if (computerScore > 4) {
+        alert("You lost the game ):");
     }
     
 }
@@ -154,5 +164,18 @@ function updateImage(playerSelection, computerSelection) {
         computer.src = "img/paper.png"
     } else {
         computer.src = "img/scissors.png"
+    }
+}
+
+function updateScore(winner) {
+    let p = document.getElementsByClassName('score-text-player')[0];
+    let c = document.getElementsByClassName('score-text-computer')[0];
+    
+    if (winner) {
+        playerScore++;
+        p.innerHTML = `Player: ${playerScore}`;
+    } else {
+        computerScore++;
+        c.innerHTML = `Computer: ${computerScore}`;
     }
 }
