@@ -141,8 +141,10 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerScore > 4) {
         alert("You won the game!");
+        location.reload();
     } if (computerScore > 4) {
         alert("You lost the game ):");
+        location.reload();
     }
     
 }
