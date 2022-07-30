@@ -181,7 +181,22 @@ function updateScore(winner) {
 
     if (playerScore > 4) {
         result.innerHTML = 'You won the game!'
+        promptReset();
     } else if (computerScore > 4) {
         result.innerHTML = 'You lost the game &#128533'
+        promptReset();
     }
+}
+
+function promptReset() {
+    let buttons = document.getElementsByClassName("button-container")[0];
+    buttons.innerHTML = "";
+    
+    let resetButton = document.createElement("div");
+    resetButton.className = 'reset';
+    resetButton.innerHTML = "Try again?"
+    resetButton.addEventListener('click', e => {
+        location.reload();
+    });
+    buttons.append(resetButton);
 }
