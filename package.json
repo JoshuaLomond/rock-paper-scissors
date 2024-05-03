@@ -1,0 +1,16 @@
+{
+  "name": "rock-paper-scissors",
+  "version": "1.0.0",
+  "description": "- This is a simple Rock Paper Scissors game.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  }
+}
