@@ -1,12 +1,24 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { GameService, Choice, GameResult } from './game.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('rock-paper-scissors');
+  readonly title = signal('Rock Paper Scissors');
+  gameResult = signal<GameResult | null>(null);
+
+  constructor(private gameService: GameService) {}
+
+  play(choice: Choice): void {
+    const result = this.gameService.play(choice);
+    this.gameResult.set(result);
+  }
+
+  reset(): void {
+    this.gameResult.set(null);
+  }
 }

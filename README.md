@@ -1,59 +1,133 @@
-# RockPaperScissors
+# Rock Paper Scissors
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+A simple yet engaging Rock Paper Scissors game built with Angular 21. Challenge the computer in this classic game of chance and strategy!
 
-## Development server
+## 🎮 About
 
-To start a local development server, run:
+This is a web-based implementation of the classic Rock Paper Scissors game where you compete against the computer. Make your choice, and see if you can outsmart the randomized computer opponent!
 
-```bash
-ng serve
+## ✨ Features
+
+- **Simple Gameplay**: Click to choose Rock, Paper, or Scissors
+- **Instant Results**: See the outcome immediately after making your choice
+- **Visual Feedback**: Clear win/loss/draw indicators with color-coded messages
+- **Play Again**: Quick restart functionality to play multiple rounds
+- **Responsive Design**: Works seamlessly across different screen sizes
+- **Modern UI**: Clean and intuitive interface with emoji icons
+
+## 🛠️ Tech Stack
+
+- **Framework**: Angular 21
+- **Language**: TypeScript 5.9
+- **Testing**: Vitest 4.0
+- **Styling**: CSS3
+- **Build Tool**: Angular CLI
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (version 18 or higher recommended)
+- npm 11.6.1 or higher
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone git@github.com:JoshuaLomond/rock-paper-scissors.git
+   cd rock-paper-scissors
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm start
+   ```
+
+4. Open your browser and navigate to `http://localhost:4200/`
+
+The application will automatically reload when you make changes to the source files.
+
+## 🎯 How to Play
+
+1. Click on one of the three buttons: Rock 🪨, Paper 📄, or Scissors ✂️
+2. The computer will randomly select its choice
+3. The winner is determined by the classic rules:
+   - Rock beats Scissors
+   - Scissors beats Paper
+   - Paper beats Rock
+4. Click "Play Again" to start a new round
+
+## 📁 Project Structure
+
+```
+rock-paper-scissors/
+├── src/
+│   ├── app/
+│   │   ├── app.ts              # Main application component
+│   │   ├── app.html            # Application template
+│   │   ├── app.css             # Application styles
+│   │   ├── game.service.ts     # Game logic service
+│   │   └── game.service.spec.ts # Service tests
+│   ├── index.html              # Main HTML file
+│   ├── main.ts                 # Application entry point
+│   └── styles.css              # Global styles
+├── package.json                # Dependencies and scripts
+└── angular.json                # Angular configuration
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🧪 Testing
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Run the test suite with:
 
 ```bash
-ng generate component component-name
+npm test
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The project uses Vitest for unit testing. Tests are located alongside their respective source files with the `.spec.ts` extension.
+
+## 🔨 Available Scripts
+
+- `npm start` - Start the development server
+- `npm run build` - Build the project for production
+- `npm test` - Run unit tests
+- `npm run watch` - Build and watch for changes
+
+## 🏗️ Building for Production
+
+To create a production build:
 
 ```bash
-ng generate --help
+npm run build
 ```
 
-## Building
+The build artifacts will be stored in the `dist/` directory, optimized for performance and ready for deployment.
 
-To build the project run:
+## 📝 Code Style
 
-```bash
-ng build
-```
+This project uses Prettier for code formatting with the following configuration:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Print width: 100 characters
+- Single quotes for strings
+- Angular parser for HTML templates
 
-## Running unit tests
+## 🤝 Contributing
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
 
-```bash
-ng test
-```
+## 📄 License
 
-## Running end-to-end tests
+This project is open source and available under the [MIT License](LICENSE).
 
-For end-to-end (e2e) testing, run:
+## 🔗 Additional Resources
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- [Angular Documentation](https://angular.dev)
+- [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
